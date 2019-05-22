@@ -21,6 +21,7 @@ class SinglyLinkedList(object):
         if new_node:
             new_node._next = self._head
             self._head = new_node
+
     # 根据索引查找结点信息
     def find_by_index(self, index):
         p = self._head 
@@ -51,6 +52,7 @@ class SinglyLinkedList(object):
     def delete_by_value(self, value):
         current_p = self._head
         next_p = current_p._next
+        # 处理当给定值是第一个结点的情况
         if current_p and current_p.data == value:
             self._head = next_p
             return
@@ -64,14 +66,37 @@ class SinglyLinkedList(object):
         else:
             return
 
-    # 删除给定节点的后继节点
+    # 删除给定结点的前驱结点
+    def delete_prev_node_before_target(self, node):
+        current_node = self._head
+        if current_node == node:
+            return 
+
+        next_node = current_node._next
+        next_2_node = current_node._next._next
+        if next_node == node:
+            self._head = next_node
+
+        while next_2_node and next_2_node != node:
+            current_node = current_node._next
+            next_node = current_node._next
+            next_2_node = current_node._next._next
+
+        if next_2_node:
+            current_node._next = next_2_node
+        else:
+            return
+
+
+
+    # 删除给定结点的后继结点
     def delete_next_node_after_target(self, node):
         if node._next == None:
             return 
         else:
             node._next = node._next._next
 
-    # 删除当前节点
+    # 删除当前结点
     def delete_current_node(self, node):
         p = self._head
         if p == node:
@@ -90,16 +115,15 @@ class SinglyLinkedList(object):
 
 if __name__ == '__main__':
     l = SinglyLinkedList()
-    for i in range(2):
-        l.insert_value_to_head(i)
-    # node3 = l.find_by_value(1)
-    # print(node3.data)
+    for i in range(5):
+        l.change_value_to_node(i)
+    delete_node = l.find_by_value(4)
+    print(delete_node.data)
     # l.insert_value_after(node3, 10)
     l.print_all()
     print()
-    # print(l.find_by_value(0)
-    # l.delete_by_node(l.find_by_value(1))
-    l.delete_current_node(l.find_by_value(1))
+    l.delete_prev_node_before_target(delete_node)
+    # l.delete_current_node(l.find_by_value(1))
     l.print_all()
     # l.delete_by_value(4)
     # print()
