@@ -79,7 +79,7 @@ class SinglyLinkedList(object):
 
         while next_2_node and next_2_node != node:
             current_node = current_node._next
-            next_node = current_node._next
+            # next_node = current_node._next
             next_2_node = current_node._next._next
 
         if next_2_node:
@@ -117,7 +117,7 @@ if __name__ == '__main__':
     l = SinglyLinkedList()
     for i in range(5):
         l.change_value_to_node(i)
-    delete_node = l.find_by_value(4)
+    delete_node = l.find_by_value(3)
     print(delete_node.data)
     # l.insert_value_after(node3, 10)
     l.print_all()
