@@ -26,11 +26,26 @@ class CircularLinkedList(object):
 			self._head = new_node
 			current._next = new_node
 
+	def insert_new_value_to_end(self, value):
+		new_node = Node(value)
+		if self._head == None:
+			self._head = new_node
+			new_node._next = new_node
+		else:
+			current = self._head
+			while current._next != self._head:
+				current = current._next
+
+			new_node._next = self._head
+			current._next = new_node
+
+
 	def print_all(self):
 	    current = self._head
 	    if current:
 	        print(f"{current.data}", end="")
 	        current = current._next
+	    # while current:
 	    while current != self._head:
 	        print(f"->{current.data}", end="")
 	        current = current._next
@@ -38,5 +53,5 @@ class CircularLinkedList(object):
 if __name__ == '__main__':
 	l = CircularLinkedList()
 	l.insert_new_value_to_head(1)
-	l.insert_new_value_to_head(2)
+	l.insert_new_value_to_end(2)
 	l.print_all()
