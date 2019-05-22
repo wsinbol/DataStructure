@@ -11,11 +11,17 @@ class SinglyLinkedList(object):
     def __init__(self):
         self._head = None
 
+    # 将待添加的值实例化成Node类
+    def change_value_to_node(self, value):
+        new_node = Node(value)
+        self.insert_node_to_head(new_node)
+
+    # 将新结点插入到最前面
     def insert_node_to_head(self, new_node):
         if new_node:
             new_node._next = self._head
             self._head = new_node
-
+    # 根据索引查找结点信息
     def find_by_index(self, index):
         p = self._head 
         position = 0
@@ -24,24 +30,24 @@ class SinglyLinkedList(object):
             position += 1
         return p
 
+    # 根据值查找结点信息
     def find_by_value(self, value):
         p = self._head
         while p and p.data != value:
             p = p._next
         return p
 
-    def insert_value_to_head(self, value):
-        new_node = Node(value)
-        self.insert_node_to_head(new_node)
-
+    # 在给定结点后插入值
     def insert_value_after(self, node, value):
         new_node = Node(value)
         self.insert_node_after(node, new_node)
 
+    # 在给定结点后插入新结点
     def insert_node_after(self, node, new_node):
         new_node._next = node._next
         node._next = new_node
 
+    # 删除等于给定值的结点
     def delete_by_value(self, value):
         current_p = self._head
         next_p = current_p._next
