@@ -39,6 +39,19 @@ class CircularLinkedList(object):
 			new_node._next = self._head
 			current._next = new_node
 
+	def find_by_value(self, value):
+		target_node = Node(value)
+		current = self._head
+		while current != target_node and current._next != self._head:
+			current = current._next
+
+		if current == target_node:
+			return current
+		else:
+			return None
+	# def delete_by_value(self, value):
+
+
 
 	def print_all(self):
 	    current = self._head
@@ -55,3 +68,6 @@ if __name__ == '__main__':
 	l.insert_new_value_to_head(1)
 	l.insert_new_value_to_end(2)
 	l.print_all()
+	print()
+	rs = l.find_by_value(1)
+	print(rs.data)
