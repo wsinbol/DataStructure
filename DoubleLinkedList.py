@@ -11,7 +11,8 @@ class DoubleLinkedList(object):
 	'''
 	方法：
 	insert_new_value_to_head 在头部插入新结点
-	insert_new_value_after_target_node 在给定结点后插入新结点
+	insert_new_value_after_target_node 在给定结点后
+	插入新结点
 	insert_new_value_before_target_node 在给定结点前插入新结点
 	delete_target_node 删除给定结点
 	print_double_linked_list 打印链表信息
