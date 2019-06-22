@@ -40,6 +40,8 @@ class CircularLinkedList(object):
 			current._next = new_node
 
 	def find_by_value(self, value):
+		# 不能调用Node类生成目标结点，因为current != target_node 是永远成立的！！！
+		'''
 		target_node = Node(value)
 		current = self._head
 		while current != target_node and current._next != self._head:
@@ -49,6 +51,16 @@ class CircularLinkedList(object):
 			return current
 		else:
 			return None
+		'''
+		# So 改成如下形式：
+		current = self._head
+		while current.data != value and current._next != self._head:
+			current = current._next
+
+		if current:
+			return current
+		else:
+			return 
 	# def delete_by_value(self, value):
 
 
@@ -69,5 +81,5 @@ if __name__ == '__main__':
 	l.insert_new_value_to_end(2)
 	l.print_all()
 	print()
-	rs = l.find_by_value(1)
+	rs = l.find_by_value(2)
 	print(rs.data)
