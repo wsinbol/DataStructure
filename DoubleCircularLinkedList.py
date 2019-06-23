@@ -36,6 +36,13 @@ class DoubleCircularLinkedList(object):
 			# 更新头结点
 			self._head = new_node
 
+	def insert_new_value_after_target_node(self, value, node):
+		new_node = Node(value)
+		new_node._next = node._next
+		node._next._prev = new_node
+		new_node._prev = node
+		node._next = new_node
+
 
 	def find_by_value(self, value):
 		current = self._head
@@ -63,6 +70,8 @@ if __name__ == '__main__':
 	l.insert_new_value_to_head(1)
 	l.insert_new_value_to_head(2)
 	l.insert_new_value_to_head(3)
+	node2 = l.find_by_value(2)
+	l.insert_new_value_after_target_node(4, node2)
 	l.print_linked_list()
-	print(l.find_by_value(3).data)
+	# print(l.find_by_value(2).data)
 
