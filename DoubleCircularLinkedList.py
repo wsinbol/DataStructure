@@ -75,6 +75,20 @@ class DoubleCircularLinkedList(object):
 		else:
 			return
 
+	def get_linked_list_length(self):
+
+		current = self._head
+		length = 0
+		if current:
+			length += 1
+			current = current._next
+
+		while current != self._head:
+			length += 1
+			current = current._next
+
+		return length
+
 
 	def print_linked_list(self):
 		current = self._head
@@ -89,8 +103,11 @@ class DoubleCircularLinkedList(object):
 if __name__ == '__main__':
 	l = DoubleCircularLinkedList()
 	l.insert_new_value_to_head(1)
+	l.insert_new_value_to_head(2)
 	node1 = l.find_by_value(1)
-	l.delete_target_node(node1)
+	# l.delete_target_node(node1)
+
+	print(l.get_linked_list_length())
 
 	'''
 	l.insert_new_value_to_head(2)
