@@ -36,12 +36,30 @@ class DoubleCircularLinkedList(object):
 			# 更新头结点
 			self._head = new_node
 
+	# target_node cannot be tail node
 	def insert_new_value_after_target_node(self, value, node):
 		new_node = Node(value)
 		new_node._next = node._next
 		node._next._prev = new_node
 		new_node._prev = node
 		node._next = new_node
+
+	def insert_new_value_before_target_node(self, value, node):
+		
+		# 判断基准标点是否为头结点
+		if self._head == node:
+			self.insert_new_value_to_head(value)
+		else:
+			new_node = Node(value)
+			
+			node._prev._next = new_node
+			new_node._prev = node._prev
+			new_node._next = node
+			node._prev = new_node
+
+	def delete_target_node(self, node):
+		node._prev._next = node._next
+		node._next._prev = node._prev
 
 
 	def find_by_value(self, value):
@@ -72,6 +90,17 @@ if __name__ == '__main__':
 	l.insert_new_value_to_head(3)
 	node2 = l.find_by_value(2)
 	l.insert_new_value_after_target_node(4, node2)
+	l.insert_new_value_after_target_node(5, node2)
+
+	l.insert_new_value_before_target_node(6, node2)
+	l.insert_new_value_before_target_node(7, node2)
+	l.delete_target_node(node2)
+	node1 = l.find_by_value(1)
+	l.insert_new_value_after_target_node(8, node1)
+	l.insert_new_value_after_target_node(9, node1)
+
+	node3 = l.find_by_value(3)
+	l.insert_new_value_before_target_node(10, node3)
 	l.print_linked_list()
 	# print(l.find_by_value(2).data)
 
