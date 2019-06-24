@@ -51,15 +51,18 @@ class DoubleCircularLinkedList(object):
 			self.insert_new_value_to_head(value)
 		else:
 			new_node = Node(value)
-			
+
 			node._prev._next = new_node
 			new_node._prev = node._prev
 			new_node._next = node
 			node._prev = new_node
 
 	def delete_target_node(self, node):
-		node._prev._next = node._next
-		node._next._prev = node._prev
+		if self._head == node:
+			self._head = None
+		else:
+			node._prev._next = node._next
+			node._next._prev = node._prev
 
 
 	def find_by_value(self, value):
@@ -86,6 +89,10 @@ class DoubleCircularLinkedList(object):
 if __name__ == '__main__':
 	l = DoubleCircularLinkedList()
 	l.insert_new_value_to_head(1)
+	node1 = l.find_by_value(1)
+	l.delete_target_node(node1)
+
+	'''
 	l.insert_new_value_to_head(2)
 	l.insert_new_value_to_head(3)
 	node2 = l.find_by_value(2)
@@ -101,6 +108,7 @@ if __name__ == '__main__':
 
 	node3 = l.find_by_value(3)
 	l.insert_new_value_before_target_node(10, node3)
+	'''
 	l.print_linked_list()
 	# print(l.find_by_value(2).data)
 
