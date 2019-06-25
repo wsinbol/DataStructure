@@ -44,6 +44,12 @@ class DoubleCircularLinkedList(object):
 		new_node._prev = node
 		node._next = new_node
 
+	def is_empty(self):
+		if self._head == None:
+			return True
+		else:
+			return False
+
 	def insert_new_value_before_target_node(self, value, node):
 		
 		# 判断基准标点是否为头结点
@@ -102,12 +108,15 @@ class DoubleCircularLinkedList(object):
 
 if __name__ == '__main__':
 	l = DoubleCircularLinkedList()
-	l.insert_new_value_to_head(1)
+	# l.insert_new_value_to_head(1)
 	l.insert_new_value_to_head(2)
-	node1 = l.find_by_value(1)
-	# l.delete_target_node(node1)
 
-	print(l.get_linked_list_length())
+	# print(l.is_empty())
+
+	
+	# node1 = l.find_by_value(1)
+	# l.delete_target_node(node1)
+	# print(l.get_linked_list_length())
 
 	'''
 	l.insert_new_value_to_head(2)
@@ -126,6 +135,7 @@ if __name__ == '__main__':
 	node3 = l.find_by_value(3)
 	l.insert_new_value_before_target_node(10, node3)
 	'''
+
 	l.print_linked_list()
 	# print(l.find_by_value(2).data)
 
