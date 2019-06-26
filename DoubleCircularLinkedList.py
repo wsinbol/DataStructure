@@ -31,7 +31,7 @@ class DoubleCircularLinkedList(object):
 			self._head._prev = new_node
 			# 新结点的前驱指向尾结点
 			new_node._prev = tail
-			# 未结点的后继指向新结点
+			# 尾结点的后继指向新结点
 			tail._next = new_node
 			# 更新头结点
 			self._head = new_node
@@ -52,7 +52,7 @@ class DoubleCircularLinkedList(object):
 
 	def insert_new_value_before_target_node(self, value, node):
 		
-		# 判断基准标点是否为头结点
+		# 判断基准结点是否为头结点
 		if self._head == node:
 			self.insert_new_value_to_head(value)
 		else:
