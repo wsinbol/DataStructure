@@ -65,7 +65,10 @@ class DoubleCircularLinkedList(object):
 
 	def delete_target_node(self, node):
 		if self._head == node:
-			self._head = None
+			tail = self._head._prev
+			node._next._prev = tail
+			tail._next = node._next
+			self._head = self._head._next
 		else:
 			node._prev._next = node._next
 			node._next._prev = node._prev
@@ -108,14 +111,14 @@ class DoubleCircularLinkedList(object):
 
 if __name__ == '__main__':
 	l = DoubleCircularLinkedList()
-	# l.insert_new_value_to_head(1)
+	l.insert_new_value_to_head(1)
 	l.insert_new_value_to_head(2)
 
 	# print(l.is_empty())
 
-	
-	# node1 = l.find_by_value(1)
-	# l.delete_target_node(node1)
+	node1 = l.find_by_value(2)
+	l.print_linked_list()
+	l.delete_target_node(node1)
 	# print(l.get_linked_list_length())
 
 	'''
