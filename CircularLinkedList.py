@@ -53,6 +53,8 @@ class CircularLinkedList(object):
 		else:
 			return None
 		'''
+
+		'''
 		# So 改成如下形式：
 		current = self._head
 		while current.data != value and current._next != self._head:
@@ -61,8 +63,15 @@ class CircularLinkedList(object):
 		if current.data == value:
 			return current
 		else:
-			return 
-	# def delete_by_value(self, value):
+			return
+		'''
+		
+		# 记录错误方法,与上述不同的原因见DoubleLinkedList.py中的get_node_by_value()
+		current = self._head
+		while current and current.data != value and current._next != self._head:
+			current = current._next
+		return current
+		
 
 	def delete_target_node(self, node):
 		current = self._head
@@ -98,9 +107,11 @@ if __name__ == '__main__':
 	l.insert_new_value_to_head(1)
 	l.insert_new_value_to_end(2)
 	l.insert_new_value_to_end(3)
+	l.insert_new_value_to_head(4)
 	# l.print_all()
 	# print()
-	node2 = l.find_by_value(3)
+	node2 = l.find_by_value(7)
+	print(node2.data)
 	# print(node2.data)
 	# exit()
 	# l.delete_target_node(node2)

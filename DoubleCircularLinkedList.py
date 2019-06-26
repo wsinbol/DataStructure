@@ -79,7 +79,7 @@ class DoubleCircularLinkedList(object):
 		while current.data != value and current._next != self._head:
 			current = current._next
 
-		if current:
+		if current.data == value:
 			return current
 		else:
 			return

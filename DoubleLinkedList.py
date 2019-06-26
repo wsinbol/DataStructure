@@ -67,6 +67,13 @@ class DoubleLinkedList(object):
 		while current and current.data != value:
 			current = current._next
 
+		'''
+		下述两种返回形式都可以：
+		因为在非循环链表中，遍历整个链表依然没有目标值后，其最终指向地址都是None
+		而循环链表中，遍历到链表结尾后，其最终指向地址不会是None，所以要手动判断一下
+		'''
+		return current
+
 		if current:
 			return current
 		else:
@@ -100,12 +107,14 @@ if __name__ == '__main__':
 	data2 = dl.get_node_by_value(2)
 	dl.insert_new_value_after_target_node(data2, 3)
 	dl.insert_new_value_after_target_node(data2, 4)
+	dl.print_double_linked_list()
 
 	# 删除数据4这个结点
-	data4 = dl.get_node_by_value(4)
-	dl.delete_target_node(data4)
+	data4 = dl.get_node_by_value(6)
+	print(data4)
+	# dl.delete_target_node(data4)
 	
-
+	exit()
 	'''
 	# 在数据1前插入新结点
 	data1 = dl.get_node_by_value(1)
