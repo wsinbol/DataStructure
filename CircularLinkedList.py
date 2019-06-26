@@ -41,6 +41,7 @@ class CircularLinkedList(object):
 
 	def find_by_value(self, value):
 		# 不能调用Node类生成目标结点，因为current != target_node 是永远成立的！！！
+		# 因为：新生成的结点与链表中任何一个结点的地址是完全不一样的！！！
 		'''
 		target_node = Node(value)
 		current = self._head
@@ -66,6 +67,7 @@ class CircularLinkedList(object):
 	def delete_target_node(self, node):
 		current = self._head
 
+		# None结点会造成死循环
 		if node == None:
 			return 
 
@@ -96,12 +98,12 @@ if __name__ == '__main__':
 	l.insert_new_value_to_head(1)
 	l.insert_new_value_to_end(2)
 	l.insert_new_value_to_end(3)
-	l.print_all()
+	# l.print_all()
 	# print()
-	node2 = l.find_by_value(4)
+	node2 = l.find_by_value(3)
 	# print(node2.data)
 	# exit()
-	l.delete_target_node(node2)
+	# l.delete_target_node(node2)
 	print()
 	l.print_all()
 
