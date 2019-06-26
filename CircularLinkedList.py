@@ -57,7 +57,7 @@ class CircularLinkedList(object):
 		while current.data != value and current._next != self._head:
 			current = current._next
 
-		if current:
+		if current.data == value:
 			return current
 		else:
 			return 
@@ -65,6 +65,9 @@ class CircularLinkedList(object):
 
 	def delete_target_node(self, node):
 		current = self._head
+
+		if node == None:
+			return 
 
 		if current == node:
 			self._head = node._next
@@ -95,7 +98,7 @@ if __name__ == '__main__':
 	l.insert_new_value_to_end(3)
 	l.print_all()
 	# print()
-	node2 = l.find_by_value(2)
+	node2 = l.find_by_value(4)
 	# print(node2.data)
 	# exit()
 	l.delete_target_node(node2)
