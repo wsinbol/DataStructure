@@ -6,7 +6,7 @@ class Node(object):
 		self.data = data
 		self._next = _next
 
-# 栈是操作受限的链表
+# 栈是操作受限的线性表，只允许在一端插入和删除数据
 class LinkedStack(object):
 	def __init__(self, _top=None):
 		self._top = _top
