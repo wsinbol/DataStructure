@@ -9,7 +9,9 @@ class CircularQueue(object):
 		# 队满时的tail位置并不存储数据，所以循环队列会浪费一个存储空间
 		# 针对这种情况，避免造成和数组等类型的不一致，所以再封装循环队列的时候可以将capacity+1以保证确实能存储capacity个数据
 		# 这样也不会给调用者造成迷惑
-		self._capacity = capacity
+		
+		# self._capacity = capacity
+		self._capacity = capacity + 1
 		self._head = 0
 		self._tail = 0
 
