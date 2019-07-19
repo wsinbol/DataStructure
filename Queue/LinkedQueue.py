@@ -21,7 +21,7 @@ class LinkedQueue(object):
 			self._head = new_node
 		self._tail = new_node
 
-	def delqueue(self):
+	def dequeue(self):
 		if self._head:
 			value = self._head.data
 			self._head = self._head._next
@@ -45,7 +45,7 @@ if __name__ == '__main__':
 	print(q)
 
 	for _ in range(3):
-		q.delqueue()
+		q.dequeue()
 	print(q)
 
 	q.enqueue('10')
