@@ -20,7 +20,7 @@ class CircularQueue(object):
 		if (self._tail + 1) % self._capacity == self._head:
 			print('The queue is full! The data %s ignored!' % value)
 			return False
-		# 使用下面方式可以不先初始化队列中的_items，但是在删除队头数据，再添加队尾元素后，遍历发现仍然是原来的对头数据，所以下述方式不妥
+		# 使用下面方式可以不先初始化队列中的_items，但是在删除队头数据，再添加队尾元素后，遍历发现仍然是原来的队头数据，所以下述方式不妥
 		# self._items.append(value)
 		
 		# 用下标的方式更新则需要预先填充队列，否则数组越界
