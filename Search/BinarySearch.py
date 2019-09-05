@@ -10,7 +10,7 @@
 
 易错点：
 	循环退出条件为low <= high，而不是low < high；同时注意和各排序算法的临界条件的异同（如快速排序）
-	mid取值：low和hight很大时有可能溢出
+	mid取值：low和hight很大时有可能溢出（Python中是不会存在溢出情况的）
 '''
 
 def BinarySearch(arr, value):
