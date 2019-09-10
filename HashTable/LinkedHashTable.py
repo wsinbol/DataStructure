@@ -1,108 +1,92 @@
 # -*- coding:utf-8 -*-
 '''
-基于开放寻址法-线性探测的散列表
-
-开放寻址方法：
-1.线性探测
-2.二次探测
-3.双重散列
+基于单链表的散列表数据结构
 '''
+class Node(object):
+	def __init__(self, _data=None, _next=None):
+		self._data = _data
+		self._next = _next
+
 class HashTable(object):
 	def __init__(self, _size = 0):
-		self._table = [None for i in range(_size)]
+		self._table = [Node() for i in range(_size)]
 		self._size = _size
 
 	def hash_function(self,key):
 		return key % self._size
 
 	def insert(self, val):
-		# 千万别用 == 
-		if self._table[self.hash_function(val)] is None or self._table[self.hash_function(val)] is False:
-			self._table[self.hash_function(val)] = val
-		else:
-			key = self.linear_probing(self.hash_function(val))
-			if key != None:
-				print(val,'-触发寻址,原本下标为:',self.hash_function(val),'实际下标为:',key)
-				self._table[key] = val
-			else:
-				print('Full,',val,'cannot insert')
+		key = self.hash_function(val)
+		node = Node(val)
+		node._next = self._table[key]._next
+		self._table[key]._next = node
 
 	def search(self, val):
 		key = self.hash_function(val)
-		if self._table[key] == val:
-			return key
 
-		start_key = key + 1
-		if start_key == self._size:
-			start_key = 0
-		while self._table[start_key] is not None and key != start_key:
-			if self._table[start_key] == val:
-				return start_key
-			else:
-				start_key += 1
-				if start_key == self._size:
-					start_key = 0
+		if self._table[key]._next is None:
+			return (key, None)
+		else:
+			head = self._table[key]._next
+
+		if head._data == val:
+			return (key, head)
+
+		head_next = head._next
+		while head_next is not None:
+			if head_next._data == val:
+				return (key, head_next)
+			head_next = head_next._next
+
 		return None
 
 	def delete(self, val):
 		key = self.hash_function(val)
-		if self._table[key] == val:
-			self._table[key] = False
-			return
+		if self._table[key]._next is None:
+			return None
 
-		start_key = key + 1
-		is_loop = 0
+		head = self._table[key]._next
+		if head._data == val:
+			_, addr = self.search(val)
+			self._table[key]._next = addr._next
 
-		if start_key == self._size:
-			start_key = 0
-
-		while not is_loop:
-			if self._table[start_key] == val:
-				self._table[start_key] = False
-				break
-			else:
-				start_key += 1
-				if start_key == self._size:
-					start_key = 0
-				if start_key+1 == key:
-					is_loop = 1
-		return None
-
-	'''
-	线性探测寻址
-	'''
-	def linear_probing(self, key):
-		start_key = key + 1
-		while start_key != key:
-			if start_key == self._size:
-				start_key = 0
-			#  0 == Fasle return True; so replace with 'is False'
-			if self._table[start_key] is None or self._table[start_key] is False:
-				return start_key
-			else:
-				start_key += 1
+		next_point = head._next
+		while next_point is not None and next_point._data != val:
+			head = next_point
+			next_point = next_point._next
+			
+		if next_point:
+			head._next = next_point._next
 		return
 
+
 	def print_table(self):
-		for k,v in enumerate(self._table):
-			print(k,'-->',v)
+		for i in range(self._size):
+			print(i,end=":")
+			current = self._table[i]._next
+			while current is not None:
+				print(current._data,end="->")
+				current = current._next
+			print('None')
 
 if __name__ == '__main__':
 	h = HashTable(6)
-	h.insert(12)
-	h.insert(0)
-	h.insert(5)
-	h.insert(11)
+	h.insert(3)
+	h.insert(9)
 	h.insert(15)
-	h.print_table()
+
+	h.insert(10)
+	h.insert(4)
+	print('search...')
+	index, addr = h.search(6)
+	if addr:
+		print(addr._data)
+	else:
+		print('Not Found')
+
 	print('delete...')
-	h.delete(5)
-	h.delete(15)
+	h.delete(3)
 	h.print_table()
-	print('insert...')
-	h.insert(17)
-	h.insert(23)
-	print()
-	h.print_table()
+
 
 
