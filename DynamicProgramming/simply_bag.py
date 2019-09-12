@@ -5,9 +5,37 @@
 '''
 
 import numpy as np
+
+def max_weight_in_bag(goods_weight, max_weight):
+	goods_num = len(goods_weight)
+	states = np.zeros((goods_num, max_weight + 1))
+
+	states[0][0] = 1
+	if goods_weight[0] < max_weight:
+		states[0][goods_weight[0]] = 1
+
+	for i in range(1, goods_num):
+		for j in range(max_weight + 1):
+			if states[i-1][j] == 1:
+				states[i][j] = 1
+
+		for j in range(max_weight - goods_weight[i] + 1):
+			if states[i-1][j] == 1:
+				states[i][j + goods_weight[i]] = 1
+
+	cols = max_weight
+	while cols >= 0:
+		if states[goods_num-1][cols] == 1:
+			return cols
+		cols -= 1
+
+
 goods_num = 5 # 物品总个数
-goods_weight = [2,2,4,6,3] # 每个物品的重量
+goods_weight = [2,2,6,2] # 每个物品的重量
 max_weight = 9 # 背包中最大重量
+num = max_weight_in_bag(goods_weight, max_weight)
+print('max weight:',num)
+exit()
 
 states = np.zeros((5,10))
 states[0][0] = 1 # 初始化第0个物品不入背包状态，行表示第i个物品，列表示入背包后的重量，值为标识状态
@@ -23,7 +51,7 @@ for i in range(1,goods_num): # 从第1个物品开始处理
 		if states[i-1][j] == 1:
 			states[i][j+goods_weight[i]] = 1
 
-# print(states)
+print(states)
 cols = max_weight
 while cols >= 0:
 	if states[goods_num-1][cols] == 1:

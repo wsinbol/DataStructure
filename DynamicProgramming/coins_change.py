@@ -7,6 +7,7 @@
 
 import numpy as np
 
+'''
 money = [1,3,5]
 total = 9
 
@@ -29,8 +30,26 @@ for i in range(1,total):
 				print(states)
 				print(i+1)
 				exit()
+'''
 
+def coins_change(money, total):
+	states = np.zeros((total+1, total+1))
 
+	for i in money:
+		states[0][i] = 1
+	for i in range(1, total+1):
+		for j in range(total+1):
+			if states[i-1][j]:
+				for value in money:
+					if j+value <= total:
+						states[i][j+value] = 1
+
+			if states[i][total] == 1:
+				return i+1
+
+money = [1,3,5]
+total = 9
+print('最少需要硬币：',coins_change(money, total))
 
 
 

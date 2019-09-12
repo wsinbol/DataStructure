@@ -11,16 +11,53 @@ t
 c
 m
 u
+莱文斯坦距离衡量的是字符串的差异化程度
 '''
 
 import numpy as np
+
+def levenshtein_distance(str_a, str_b):
+	# str_a的长度是列的大小
+	# str_b的长度是行的大小
+	# 所以定义states矩阵时要写成(len_b, len_a)
+	# 同理，在返回最终结果时也是一样的！
+	len_a = len(str_a) 
+	len_b = len(str_b) 
+	states = np.zeros((len_b, len_a))
+
+	for j in range(len_a):
+		if j == 0 and str_b[0] == str_a[j]:
+			states[0][0] = 0
+		else:
+			states[0][j] = states[0][j-1] + 1
+
+	for i in range(len_b):
+		if i == 0 and str_a[0] == str_b[i]:
+			states[i][0] = 0
+		else:
+			states[i][0] = states[i-1][0] + 1
+
+	for i in range(1, len_b):
+		for j in range(1, len_a):
+			if str_b[i] == str_a[j]:
+				states[i][j] = min(states[i-1][j-1], states[i-1][j] + 1, states[i][j-1]+1)
+			else:
+				states[i][j] = min(states[i-1][j-1]+1, states[i-1][j] + 1, states[i][j-1]+1)
+
+	print(states[len_b-1][len_a-1])
+
+
 str_a = 'mtacnu'
-str_b = 'mitcmu'
+str_b = 'mitcm'
+levenshtein_distance(str_a, str_b)
+exit()
+
+
 
 len_a = len(str_a)
 len_b = len(str_b)
 
-states = np.zeros((len_a, len_b))
+states = np.zeros((len_b, len_a))
 
 # 处理第一行，遍历字符串a
 for j in range(len_a):
@@ -36,6 +73,8 @@ for i in range(len_b):
 	else:
 		states[i][0] = states[i-1][0] + 1
 
+
+
 # 从第二行，第二列开始处理
  
 for i in range(1, len_b):
@@ -50,4 +89,4 @@ for i in range(1, len_b):
 			states[i][j] = min(states[i-1][j]+1, states[i][j-1]+1, states[i-1][j-1]+1)
 
 print(states)
-print(states[len_a-1][len_b-1])
+print(states[len_b-1][len_a-1])
