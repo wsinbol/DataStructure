@@ -27,7 +27,6 @@ def merge(a, low, mid, high):
 	tmp.extend(a[start:end + 1])
 	a[low:high + 1] = tmp
 
-
 if __name__ == '__main__':
 	arr = [2,3,1,5,0]
 	MergeSort(arr)
