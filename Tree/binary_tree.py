@@ -17,26 +17,25 @@ class BinaryTree(object):
 			print('Root Already exists!')
 
 	def find_by_value(self, value):
-		def iter_by_node(node):
-			if node:
-				if node._left.data == value:
-					return node._left
 
-				if node._right.data == value:
-					return node._right
-			return None
+		def make_val_addr_dict(node):
+			# 树节点的值和地址的转换
+			if node:
+				yield {
+					"data":node.data,
+					"addr": node
+				}
+				yield from make_val_addr_dict(node._left)
+				yield from make_val_addr_dict(node._right)
 
 		node = self._root
 		if node and node.data == value:
 			return node
-		
-		while node == self._root or node is None:
-			node = iter_by_node(node)
-			
-		if node and node.data == value:
-			return node
-		else:
-			return
+
+		val_addr = list(make_val_addr_dict(node))
+		for item in val_addr:
+			if item['data'] == value:
+				return item['addr']
 
 	def insert2left_of_target(self, value, target):
 		if not target:
@@ -80,6 +79,14 @@ if __name__ == '__main__':
 	node4 = bt.find_by_value(3)
 	bt.insert2left_of_target(5, node4)
 	bt.insert2right_of_target(6, node4)
+
+	node4 = bt.find_by_value(5)
+	bt.insert2left_of_target(7, node4)
+	bt.insert2right_of_target(8, node4)
+
+	node4 = bt.find_by_value(8)
+	bt.insert2left_of_target(9, node4)
+	bt.insert2right_of_target(10, node4)
 
 	print(list(bt.pre_order(node2)))
 	print(list(bt.in_order(node2)))
