@@ -97,18 +97,18 @@ class Heap(object):
 	def exch(self, i, j):
 		self.data[i],self.data[j] = self.data[j],self.data[i]
 
-	def build_heap(self):
-		leaf_index = int(self.count/2)
+	def build_heap(self, leaf_index=True):
+		leaf_index if leaf_index else int(self.count/2)
 		for i in range(leaf_index, 0, -1):
-			self.heapify(i)
+			self.heapify(i,self.count)
 			
 
-	def heapify(self,i):
+	def heapify(self,i,n):
 		while True:
 			max_pos = i
-			if self.left(i) <= self.count and self.data[self.left(i)] > self.data[i]:
+			if self.left(i) <= n and self.data[self.left(i)] > self.data[i]:
 				max_pos = self.left(i)
-			if self.right(i) <= self.count and self.data[self.right(i)] > self.data[max_pos]:
+			if self.right(i) <= n and self.data[self.right(i)] > self.data[max_pos]:
 				max_pos = self.right(i)
 
 			if max_pos == i:
@@ -117,19 +117,31 @@ class Heap(object):
 			self.exch(i,max_pos)
 			i = max_pos
 
+	def sort(self):
+		k = self.count
+		while k >= 1:
+			self.exch(1,k)
+			print(self.data[k])
+			k -= 1
+			leaf = int(k/2)
+			for i in range(leaf, 0, -1):
+				self.heapify(i,k)
 
+			
 	def show(self):
 		print(self.count)
-		print(self.data)
+		print(self.data[1:])
 
 my_list = [1,2,3,4,5,6,7,8]
 h = Heap(my_list)
 h.build_heap()
 h.show()
+h.sort()
 
+'''
 pq = pqmax()
 for i in my_list:
 	pq.insert(i)
 pq.show()
-
+'''
 

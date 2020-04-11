@@ -117,6 +117,7 @@ if __name__ == '__main__':
 	# print(l.is_empty())
 
 	node1 = l.find_by_value(2)
+	# print(node1)
 	l.print_linked_list()
 	l.delete_target_node(node1)
 	# print(l.get_linked_list_length())
