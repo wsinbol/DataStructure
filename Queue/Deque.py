@@ -37,6 +37,7 @@ class Deque:
 
 	# 单向链式节点想要实现此方法较为复杂，因为要删除节点的前一个节点不容易获取
 	# 需要双指针遍历
+	# 所以最好使用双向链式节点
 	def pop_back(self):
 		tail = self._tail
 		if tail:
