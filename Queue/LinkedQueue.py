@@ -7,6 +7,7 @@ class Node(object):
 		self.data = data
 		self._next = _next
 
+# 链式队列
 class LinkedQueue(object):
 
 	def __init__(self, _head=None, _tail=None):
@@ -21,6 +22,14 @@ class LinkedQueue(object):
 			self._head = new_node
 		self._tail = new_node
 
+	def get_head(self):
+		if self._head:
+			return self._head.data
+
+	def get_tail(self):
+		if self._tail:
+			return self._tail.data
+
 	def dequeue(self):
 		if self._head:
 			value = self._head.data
@@ -28,6 +37,12 @@ class LinkedQueue(object):
 			if not self._head:
 				self._tail = None
 			return value
+
+	def is_empty(self):
+		if self._head is None:
+			return True
+		else:
+			return False
 
 	def __repr__(self):
 		values = []
@@ -38,7 +53,61 @@ class LinkedQueue(object):
 			current = current._next
 		return "->".join(value for value in values)
 
+# 队列实现的栈
+
+class Stack:
+	def __init__(self):
+		self._top = LinkedQueue()
+		self.top_element = None
+
+	def push(self, val):
+		self._top.enqueue(val)
+		self.top_element = val
+
+	def show(self):
+		head = self._top._head
+		while head:
+			print(head.data)
+			head = head._next
+
+	def get_top(self):
+		# return self._top._tail.data
+		return self.top_element
+
+
+	def pop(self):
+		# 推荐写法
+		target = self.top_element
+		cur = self._top.dequeue()
+		while cur != target:
+			self.push(cur)
+			cur = self._top.dequeue()
+		return cur
+		
+
+		'''
+		cur = self._top.dequeue()
+		while cur != self.top_element:
+			self._top.enqueue(cur)
+			cur = self._top.dequeue()
+		return cur
+		'''
+		
+
 if __name__ == '__main__':
+	s = Stack()
+	s.push(1)
+	s.push(2)
+	s.push(3)
+	s.push(4)
+	print(s.pop())
+	print('***')
+	s.show()
+	print('***')
+	print(s.get_top())
+
+
+	'''
 	q = LinkedQueue()
 	for i in range(10):
 		q.enqueue(str(i))
@@ -50,5 +119,5 @@ if __name__ == '__main__':
 
 	q.enqueue('10')
 	print(q)
-
+	'''
 
