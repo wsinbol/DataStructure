@@ -72,7 +72,10 @@ class Stack:
 
 	def get_top(self):
 		# return self._top._tail.data
-		return self.top_element
+		if self._top._head:
+			return self.top_element
+		else:
+			return
 
 
 	def pop(self):
@@ -97,9 +100,9 @@ class Stack:
 if __name__ == '__main__':
 	s = Stack()
 	s.push(1)
-	s.push(2)
-	s.push(3)
-	s.push(4)
+	# s.push(2)
+	# s.push(3)
+	# s.push(4)
 	print(s.pop())
 	print('***')
 	s.show()
