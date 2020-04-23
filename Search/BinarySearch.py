@@ -18,7 +18,8 @@ def BinarySearch(arr, value):
 	high = len(arr) -1
 
 	while low <= high:
-		mid = int((low + high) / 2)
+		# mid = int((low + high) / 2)
+		mid = low + int((high - low) / 2)
 		if arr[mid] == value:
 			return mid
 		elif arr[mid] > value:
@@ -31,4 +32,4 @@ def BinarySearch(arr, value):
 
 if __name__ == '__main__':
 	arr = [1,3,4,5,7]
-	print(BinarySearch(arr, 6))
+	print(BinarySearch(arr, 5))
