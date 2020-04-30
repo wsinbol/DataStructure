@@ -15,7 +15,9 @@ need = {}
 for item in t:
 	need[item] = 1
 
+# 滑动窗口
 window = {}
+# 滑动窗口中符合条件的字符串个数
 match = 0
 while right < len(s):
 	c1 = s[right]

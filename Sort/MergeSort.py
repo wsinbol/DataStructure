@@ -12,6 +12,8 @@ def SplitMergeSort(arr, low, high):
 		print(low, mid, high)
 		merge(arr, low, mid, high)
 
+# 合并过程可以参考两个有序链表的合并
+
 def merge(a, low, mid, high):
 	i, j = low, mid + 1
 	tmp = []
@@ -22,6 +24,7 @@ def merge(a, low, mid, high):
 	    else:
 	        tmp.append(a[j])
 	        j += 1
+
 	start = i if i <= mid else j
 	end = mid if i <= mid else high
 	tmp.extend(a[start:end + 1])
