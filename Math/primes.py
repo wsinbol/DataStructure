@@ -78,7 +78,7 @@ def count_primes_1(num):
 	print(count-2)
 '''
 
-# 第四版
+# 第四版 - Sieve of Eratosthenes
 # 重点体会
 
 def count_primes(num):
@@ -86,10 +86,10 @@ def count_primes(num):
 	nums = [True] * num
 	i = 2
 	while i * i <= num:
-		j = i * i
+		j = i * i # 如果j 继续从2开始，则会大量的重复计算过程，尤其是数字较大的情况，
 		while j < num:
 			nums[j] = False
-			j += i
+			j += i # j 不是 +1, 而是 成倍数的i,也当做倍数来理解
 
 		i += 1
 
