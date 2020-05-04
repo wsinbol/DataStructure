@@ -103,7 +103,7 @@ if __name__ == '__main__':
 	'''
 
 	print('\n reverse k')
-	g = l.reverse_k_group(node1,2)
+	g = l.reverse_k_group(node1,3)
 	while g:
 		print(g.data)
 		g = g._next
