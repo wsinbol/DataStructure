@@ -17,6 +17,16 @@ class LinkedList:
 			new_node._next = self._head
 			self._head = new_node
 
+	# 重点体会
+	def iteration(self, head_node):
+		if head_node == None:
+			return head_node
+		# 正序遍历
+		# print(head_node.data)
+		self.iteration(head_node._next)
+		# 倒叙遍历
+		print(head_node.data)
+
 	def traverse(self, head_node, new_head):
 
 		'''
@@ -58,6 +68,9 @@ if __name__ == '__main__':
 	l.push(2)
 	l.push(3)
 	l.show()
+	l.iteration(l._head)
+
+	exit()
 	print('#'*4)
 	new_head = None
 	# 以为t还是LinkedList结构，其实不然
