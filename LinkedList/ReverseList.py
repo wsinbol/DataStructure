@@ -7,7 +7,6 @@ class Node:
 class LinkedList:
 	def __init__(self):
 		self._head = None
-		self.blank_node = Node()
 
 	def push(self, val):
 		new_node = Node(val)
@@ -23,6 +22,7 @@ class LinkedList:
 			return head_node
 		# 正序遍历
 		# print(head_node.data)
+
 		self.iteration(head_node._next)
 		# 倒叙遍历
 		print(head_node.data)
@@ -68,14 +68,15 @@ if __name__ == '__main__':
 	l.push(2)
 	l.push(3)
 	l.show()
-	l.iteration(l._head)
 
-	exit()
+	print('链表的迭代访问：')
+	l.iteration(l._head)
 	print('#'*4)
+	exit()
 	new_head = None
 	# 以为t还是LinkedList结构，其实不然
 	t = l.traverse(l._head,new_head)
 	print('type of t:',type(t))
 	while t:
-		print(t.data)
+		print(t.data,end="->")
 		t = t._next
