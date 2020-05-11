@@ -1,5 +1,55 @@
 # -*- coding:utf-8 -*-
 
+# 递归解法
+
+def min_distance(s1, s2):
+	def dp(i,j):
+		if i == -1:
+			return j + 1
+		if j == -1:
+			return i + 1
+
+		if s1[i] == s2[j]:
+			return dp(i-1, j-1)
+		else:
+			return min(dp(i,j-1) + 1, dp(i-1, j) + 1, dp(i-1,j-1) + 1)
+
+	return dp(len(s1)-1, len(s2)-1)
+
+# 上面方法存在重叠子问题，可以用备忘录或DP table 进行优化
+# 对于重叠子问题，优化方法无非是备忘录或者 DP table
+# 
+# 备忘录优化
+
+def min_distance(s1, s2):
+	memo = dict()
+	def dp(i,j):
+		if (i,j) in memo:
+			return memo[(i,j)]
+
+		if i == -1:
+			return j + 1
+		if j == -1:
+			return i + 1
+
+
+		if s1[i] == s2[j]:
+			memo[(i,j)] =  dp(i-1, j-1)
+		else:
+			memo[(i,j)] =  min(dp(i,j-1) + 1, dp(i-1, j) + 1, dp(i-1,j-1) + 1)
+		return memo[(i,j)]
+
+	return dp(len(s1)-1, len(s2)-1)
+
+# DP table 优化
+# DP table 是自底向上求解，递归解法是自顶向下求解
+
+
+s1 = 'mtacnu'
+s2 = 'ma'
+r = min_distance(s1, s2)
+print(r)
+exit()
 '''
 动态规划求莱文斯坦距离
 求解思路：
@@ -13,6 +63,8 @@ m
 u
 莱文斯坦距离衡量的是字符串的差异化程度
 '''
+
+# 争哥版
 
 import numpy as np
 
