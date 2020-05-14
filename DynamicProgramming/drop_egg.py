@@ -22,6 +22,7 @@ def drop_egg(egg_num, building_height):
 		res = float('INF')
 
 		for i in range(1,n+1):
+			                   # 鸡蛋碎了    # 鸡蛋没碎   # 在第i楼扔了一次
 			res = min(res, max(dp(k-1, i-1),dp(k,n-i)) + 1)
 		return res
 
@@ -32,3 +33,9 @@ building_height = 14
 r = drop_egg(egg_num, building_height)
 print(r)
 
+Symbol_Bcd2019
+wsinboo@gmail.com
+
+f1de73172601c74812ca817208682f40
+
+Haodttai666
