@@ -32,10 +32,3 @@ egg_num = 3
 building_height = 14
 r = drop_egg(egg_num, building_height)
 print(r)
-
-Symbol_Bcd2019
-wsinboo@gmail.com
-
-f1de73172601c74812ca817208682f40
-
-Haodttai666
