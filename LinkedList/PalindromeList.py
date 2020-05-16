@@ -44,8 +44,13 @@ class LinkedList:
 			slow = slow._next
 			fast = fast._next._next
 
+		mid = slow
+		# 处理链表长度为奇数时的逆转链表开始节点
 		if fast != None:
 			slow = slow._next
+
+
+		# return slow,mid # 最好的返回方式,即返回逆转链表的开始节点，也返回链表的中间节点
 		return slow
 
 	def traverse(self, head_node):
@@ -65,6 +70,13 @@ class LinkedList:
 	def is_palindrome(self):
 		left = self._head
 		right = self.traverse(self.get_reverse_start_node())
+
+		'''
+		print('test...')
+		while right:
+			print(right.data)
+			right = right._next
+		'''
 		
 		while right != None:
 			if left.data != right.data:
@@ -72,7 +84,9 @@ class LinkedList:
 			left = left._next
 			right = right._next
 
+		# left._next = self.traverse(right)
 		return True
+		
 
 if __name__ == '__main__':
 	l = LinkedList()
@@ -106,11 +120,14 @@ if __name__ == '__main__':
 	p.push(3)
 	p.push(2)
 	p.push(1)
+	print('原来链表：')
 	p.show()
 	mid = p.get_middle()
 	print('[!important] 反转单链表的开始节点：',mid.data)
 	r = p.is_palindrome()
 	print(r)
+	print('当前链表：')
+	p.show()
 
 exit()
 def palindrome(s,i,j):
