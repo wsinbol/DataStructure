@@ -24,7 +24,7 @@ def LongestCommonSubsequence(s1, s2):
 			# 元素存在于 lcs 中，结果 加1，并继续向前找
 			return dp(i-1, j-1)+1
 		else:
-			# 分别报纸一个不动，一个向前异动，结果取能让 lcs 更大的值
+			# 分别报纸一个不动，一个向前移动，结果取能让 lcs 更大的值
 			return max(dp(i,j-1), dp(i-1, j))
 
 	return dp(len(s1)-1, len(s2)-1)
