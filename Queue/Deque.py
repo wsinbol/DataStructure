@@ -1,3 +1,16 @@
+'''
+@Description: 
+@Date: 2020-04-13 20:50:06
+@Author: Wong Symbol
+@LastEditors: Wong Symbol
+@LastEditTime: 2020-05-30 17:17:50
+'''
+
+'''
+双端队列
+
+在队列的两端都可以进行出队和入队
+'''
 
 class Node:
 	def __init__(self, data=None):

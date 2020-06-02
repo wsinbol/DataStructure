@@ -13,6 +13,7 @@ class LinkedQueue(object):
 	def __init__(self, _head=None, _tail=None):
 		self._head = _head
 		self._tail = _tail
+		self.length = 0
 
 	def enqueue(self, value):
 		new_node = Node(value)
@@ -21,6 +22,10 @@ class LinkedQueue(object):
 		else:
 			self._head = new_node
 		self._tail = new_node
+		self.length += 1
+  
+	def get_length(self):
+		return self.length
 
 	def get_head(self):
 		if self._head:
@@ -32,6 +37,7 @@ class LinkedQueue(object):
 
 	def dequeue(self):
 		if self._head:
+			self.length -= 1
 			value = self._head.data
 			self._head = self._head._next
 			if not self._head:

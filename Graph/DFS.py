@@ -3,7 +3,7 @@
 @Date: 2020-05-31 11:45:50
 @Author: Wong Symbol
 @LastEditors: Wong Symbol
-@LastEditTime: 2020-06-02 00:31:24
+@LastEditTime: 2020-06-02 11:30:09
 '''
 
 '''
@@ -44,12 +44,35 @@ print(set(res))
 
 # 知乎版本
 
+# 递归版
+
 def DFS(graph, s, queue=[]):
     queue.append(s)
     for i in graph[s]:
         if i not in queue:
             DFS(graph, i, queue)
     return queue
+
+# 非递归版 借助 list 结构
+
+def DFS(graph, s):
+    # 借助 list 来实现
+    stack = []
+    stack.append(s)
+
+    visited = set()
+    visited.add(s)
+    
+    while len(stack) > 0:
+        vertex = stack.pop(0)
+        nodes = graph[vertex]
+
+        for node in nodes:
+            if node not in visited:
+                stack.append(node)
+                visited.add(node)
+
+        print(vertex)
 
 g = {
     'a' : ['b', 'c'],
@@ -59,4 +82,5 @@ g = {
     'e' : ['c', 'd'],
     'f' : ['d']
 }
+
 print(DFS(g, 'a'))

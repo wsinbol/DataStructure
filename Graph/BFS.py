@@ -3,7 +3,7 @@
 @Date: 2020-05-30 17:09:50
 @Author: Wong Symbol
 @LastEditors: Wong Symbol
-@LastEditTime: 2020-05-31 11:40:59
+@LastEditTime: 2020-06-02 16:37:00
 '''
 
 '''
@@ -85,8 +85,45 @@ def BFS(start, end):
                     visited.add(j)
         # 更新步数   
         step += 1
+        
+    print('the step is :', step)
 
 if __name__ == '__main__':
     r = BFS('1','6')
     print(r)
+    
+    
+# 知乎版，比上面的精简了许多，思路也不尽相同
+# https://zhuanlan.zhihu.com/p/61628249
+
+graph = {
+    'a' : ['b', 'c'],
+    'b' : ['a', 'c', 'd'],
+    'c' : ['a','b', 'd','e'],
+    'd' : ['b' , 'c', 'e', 'f'],
+    'e' : ['c', 'd'],
+    'f' : ['d']
+}
+
+# 借助 list 实现
+
+def BFS(graph, s):
+    queue = []
+    queue.append(s)
+    
+    seen = set()
+    seen.add(s)
+    
+    while len(queue) > 0:
+        vertex = queue.pop(0)
+        nodes = graph[vertex]
+        for node in nodes:
+            if node not in seen:
+                queue.append(node)
+                seen.add(node)
+        print(vertex)
+        
+BFS(graph, 'a')
+
+
     

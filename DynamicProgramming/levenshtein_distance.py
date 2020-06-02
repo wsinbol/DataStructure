@@ -2,6 +2,15 @@
 
 # 递归解法
 
+'''
+解决两个字符串的动态规划问题，一般都是用两个指针 i,j 分别指向两个字符串的最后，然后一步步往前走，缩小问题的规模。
+'''
+
+'''
+dp(i, j)的定义：返回 s1[0..i] 和 s2[0..j] 的最小编辑距离
+
+'''
+
 def min_distance(s1, s2):
 	def dp(i,j):
 		if i == -1:
@@ -12,6 +21,7 @@ def min_distance(s1, s2):
 		if s1[i] == s2[j]:
 			return dp(i-1, j-1)
 		else:
+						# 插入情况     # 删除情况      # 替换情况  # 这个需要明确操作对象是哪个？
 			return min(dp(i,j-1) + 1, dp(i-1, j) + 1, dp(i-1,j-1) + 1)
 
 	return dp(len(s1)-1, len(s2)-1)
@@ -44,11 +54,65 @@ def min_distance(s1, s2):
 # DP table 优化
 # DP table 是自底向上求解，递归解法是自顶向下求解
 
+import numpy as np
+def min_distance(s1, s2):
+	m = len(s1)
+	n = len(s2)
+	
+	dp = np.zeros((m+1,n+1))
+ 
+	for i in range(1,m+1):
+		dp[i][0] = i
+  
+	for j in range(1,n+1):
+		dp[0][j] = j
+  
+	for i in range(1,m+1):
+		for j in range(1,n+1):
+			if s1[i-1] == s2[j-1]:
+				dp[i][j] = dp[i-1][j-1]
+			else:
+				dp[i][j] = min(dp[i][j-1]+1, dp[i-1][j]+1, dp[i-1][j-1]+1)
+ 
+	print('dp table is:\n',dp)
+	return dp[m][n]
 
-s1 = 'mtacnu'
+def min_distance(s1, s2):
+	m = len(s1)
+	n = len(s2)
+	
+	dp = np.zeros((m+1,n+1))
+	op = np.zeros((m+1,n+1))
+ 
+	for i in range(1,m+1):
+		dp[i][0] = i
+  
+	for j in range(1,n+1):
+		dp[0][j] = j
+  
+	for i in range(1,m+1):
+		for j in range(1,n+1):
+			if s1[i-1] == s2[j-1]:
+				dp[i][j] = dp[i-1][j-1]
+				op[i][j] = 0
+			else:
+				arr = [dp[i][j-1]+1, dp[i-1][j]+1, dp[i-1][j-1]+1]
+				# 0-插入，1-删除，2-替换
+				opt_choice = [1,2,3]
+				index = arr.index(int(min(arr)))
+				opt = opt_choice[index]
+				dp[i][j] = arr[index]
+				op[i][j] = opt
+    
+ 
+	print('dp table is:\n',op)
+	return dp[m][n]
+
+
+s1 = 'mt'
 s2 = 'ma'
 r = min_distance(s1, s2)
-print(r)
+print('the minimum value is: ',r)
 exit()
 '''
 动态规划求莱文斯坦距离

@@ -1,3 +1,16 @@
+'''
+@Description: 全排列-回溯算法
+@Date: 2020-04-17 09:51:51
+@Author: Wong Symbol
+@LastEditors: Wong Symbol
+@LastEditTime: 2020-05-31 16:10:30
+'''
+
+'''
+全排列问题
+
+
+'''
 
 import sys
 sys.path.append("C:\\Users\\symbol_woo\\Desktop\\DataStructure")
@@ -6,8 +19,8 @@ import Tree.multi_tree as tree
 
 if __name__ == '__main__':
 
-	my_list = ['A','B','C']
-	track = []
+	my_list = ['A','B','C'] # 选择列表
+	track = [] # 路径
 	res = []
 
 	
