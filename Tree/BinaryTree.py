@@ -1,9 +1,9 @@
 '''
-@Description: 
+@Description: BinaryTree Library
 @Date: 2020-06-04 00:02:32
 @Author: Wong Symbol
 @LastEditors: Wong Symbol
-@LastEditTime: 2020-06-04 00:53:42
+@LastEditTime: 2020-06-04 16:01:10
 '''
 
 
@@ -36,6 +36,41 @@ class BinaryTree():
             self.mid_order(tree_node._left)
             print(tree_node.data)
             self.mid_order(tree_node._right)
+            
+    def post_order(self,tree_node):
+        pass
+    
+    # 求二叉树的最小高度
+    def min_depth(self, tree_node):
+        if tree_node == None:
+            return 0
+        
+        q = [tree_node]
+        depth = 1
+        
+        while len(q) > 0:
+            size = len(q)
+            
+            # 注意下面两种循环的不同
+            for i in range(0,size): # 相当于按层去遍历
+            # for i in q: # 该语句不会执行 depth += 1 操作！！！
+                print('the length of q:', len(q))
+                cur = q.pop(0)
+
+                if cur._left == None and cur._right == None:
+                    return depth
+                
+                if cur._left != None:
+                    q.append(cur._left)
+
+                if cur._right != None:
+                    q.append(cur._right)
+                
+                print([p.data for p in q])
+            depth += 1
+        
+        return None
+        
 
 
 if __name__ == '__main__':
@@ -47,13 +82,17 @@ if __name__ == '__main__':
     A.add2left(B)
     A.add2right(C)
 
+    '''
     print('pre order is:')
     bt.pre_order(bt._root)
     
-    
     print('mid order is:')
     bt.mid_order(bt._root)
-        
+    '''
+    
+    d = bt.min_depth(bt._root)
+    print('the binary tree depth is :', d)
+
 
 
         
