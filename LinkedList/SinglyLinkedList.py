@@ -1,5 +1,9 @@
 #-*-coding:utf-8-*-
 
+'''
+单链表
+'''
+
 class Node(object):
 
     def __init__(self, data, next_node=None):
@@ -112,12 +116,34 @@ class SinglyLinkedList(object):
         while current:
             print(f"->{current.data}", end="")
             current = current._next
+            
+    # 删除链表中倒数第 n 个节点
+    def delete_last_n_node(self, n):
+        print('\nexecute delete_last_%s_node method:' % n)
+        slow = self._head
+        fast = self._head
+        
+        step = 0
+        while step < n:
+            fast = fast._next
+            step += 1
+            
+        while fast._next != None:
+            fast = fast._next
+            slow = slow._next
+            
+        slow._next = slow._next._next
+        
 
 if __name__ == '__main__':
     l = SinglyLinkedList()
     for i in range(5):
         l.change_value_to_node(i)
-    delete_node = l.find_by_value(5)
+    l.print_all()
+    l.delete_last_n_node(2)
+    l.print_all()
+    exit()
+    delete_node = l.find_by_value(4)
     print(delete_node.data)
     exit()
     # l.insert_value_after(node3, 10)
