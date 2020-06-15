@@ -7,19 +7,19 @@
 - 去除有序数组的重复元素
 
 ## 链表 LinkedList
-- 单链表
+- [单链表](LinkedList/SinglyLinkedList.py)
 - 循环单链表
 - 双向链表
 - 双向循环链表
 - 双指针链表
 - 回文链表
-- K个一组反转链表
+- [K个一组反转链表](LinkedList/ReverseKGroup.py) ***
 - 反转链表
 
 ## 栈 Stack
 - 链式栈
 - 顺序栈
-- 站队高矮问题（需要更新题目信息）
+- [站队高矮问题](Stack/nextGreaterElement.py)
 
 ## 队列
 - 链式队列

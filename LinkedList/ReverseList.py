@@ -1,3 +1,10 @@
+'''
+@Description: 反转单链表的相关操作
+@Date: 2020-04-13 23:45:50
+@Author: Wong Symbol
+@LastEditors: Wong Symbol
+@LastEditTime: 2020-06-15 00:28:16
+'''
 
 class Node:
 	def __init__(self, data=None):
@@ -28,8 +35,9 @@ class LinkedList:
 		print(head_node.data)
 
 	def traverse(self, head_node, new_head):
-
+     
 		'''
+		# 另外一个版本
 		if head_node is None:
 			return ;
 		if head_node._next is None:
