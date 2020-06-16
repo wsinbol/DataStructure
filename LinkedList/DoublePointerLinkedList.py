@@ -59,6 +59,7 @@ class CircularLinkedList:
 
 		return slow.data
 
+	# 获取最后K个结点
 	def getLastKNode(self, k):
 		fast, slow = self._head, self._head
 		while k > 0:
