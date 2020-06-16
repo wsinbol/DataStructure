@@ -1,3 +1,9 @@
+'''
+循环单链表
+
+'''
+
+
 #-*- coding:utf-8 -*-
 
 class Node(object):
@@ -38,10 +44,12 @@ class CircularLinkedList(object):
 
 			new_node._next = self._head
 			current._next = new_node
+			
 
 	def find_by_value(self, value):
-		# 不能调用Node类生成目标结点，因为current != target_node 是永远成立的！！！
+		# 不能调用Node类生成目标结点，current != target_node 是永远成立的！！！
 		# 因为：新生成的结点与链表中任何一个结点的地址是完全不一样的！！！
+		# 所以只能根据值来判断，不要用地址来判断
 		'''
 		target_node = Node(value)
 		current = self._head
@@ -66,31 +74,37 @@ class CircularLinkedList(object):
 			return
 		'''
 		
-		# 记录错误方法,与上述不同的原因见DoubleLinkedList.py中的get_node_by_value()
 		current = self._head
 		while current and current.data != value and current._next != self._head:
 			current = current._next
-		return current
+   
+		if current.data == value:
+			return current
+		else:
+			return 
 		
 
 	def delete_target_node(self, node):
-		current = self._head
-
-		# None结点会造成死循环
+    
 		if node == None:
 			return 
 
-		if current == node:
-			self._head = node._next
-		else:
-			current_next = self._head._next
-			while current_next != node:
-				current = current._next
-				current_next = current_next._next
+		cur = self._head
+		nxt = cur._next
 
-			if current_next and current:
-				current._next = node._next
+		# 遍历非头结点，要么nxt指向尾结点，要么 nxt 找到要删除的结点
+		while nxt != node and nxt._next != self._head:
+			cur = cur._next
+			nxt = nxt._next
+		# 如果头结点是要删除的节点
+		if self._head == node:
+			self._head = self._head._next
+			nxt._next = self._head
+		# 命中 nxt 节点
+		if nxt == node:
+			cur._next = nxt._next
 
+		# 要删除的节点不存在什么都做
 
 	def print_all(self):
 	    current = self._head
@@ -104,17 +118,18 @@ class CircularLinkedList(object):
 
 if __name__ == '__main__':
 	l = CircularLinkedList()
-	l.insert_new_value_to_head(1)
+	# l.insert_new_value_to_head(1)
 	l.insert_new_value_to_end(2)
 	l.insert_new_value_to_end(3)
-	l.insert_new_value_to_head(4)
-	# l.print_all()
+	l.insert_new_value_to_end(4)
+	l.insert_new_value_to_head(5)
+	l.print_all()
 	# print()
-	node2 = l.find_by_value(7)
-	print(node2.data)
+	node2 = l.find_by_value(2)
+	# 使用的时候需要判断是否为 None
+	print('find:',node2)
 	# print(node2.data)
 	# exit()
-	# l.delete_target_node(node2)
-	print()
+	l.delete_target_node(node2)
 	l.print_all()
 

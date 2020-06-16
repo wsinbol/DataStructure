@@ -1,3 +1,6 @@
+'''
+双向链表
+'''
 # -*- coding:utf-8 -*-
 
 class Node(object):
