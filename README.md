@@ -8,12 +8,25 @@
 
 ## 链表 LinkedList
 - [单链表](LinkedList/SinglyLinkedList.py)
-- 循环单链表
-- 双向链表
-- 双向循环链表
-- 双指针链表
-- 回文链表
+    - 删除链表倒数第 n 个结点
+- [循环单链表](LinkedList/CircularLinkedList.py)
+- [双向链表](LinkedList/DoubleLinkedList.py)
+- [双向循环链表](LinkedList/DoubleCircularLinkedList.py)
+- [快慢指针链表](LinkedList/DoublePointerLinkedList.py) ***
+    - 检测是否有环
+    - 寻找环的起点
+    - 删除环
+    - 获取链表的中间结点（非环链表）
+    - 获取最后K个结点
+    - 带环链表的遍历
+
+- [回文链表](LinkedList/PalindromeList.py) ***
+    - 判断是否为回文链表
 - [K个一组反转链表](LinkedList/ReverseKGroup.py) ***
+    - 递归式反转
+    - 遍历式反转
+    - 区间内反转
+    - K个结点为一组型反转
 - 反转链表
 
 ## 栈 Stack
