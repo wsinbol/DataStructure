@@ -1,3 +1,19 @@
+'''
+二叉搜索树
+二叉查找树（Binary Search Tree），（又：二叉搜索树，二叉排序树）它或者是一棵空树，或者是具有下列性质的二叉树： 
+若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值
+'''
+
+'''
+void BST(TreeNode root, int target) {
+	if (root.val == target)
+		// 找到目标，做点什么
+	if (root.val < target) 
+		BST(root.right, target);
+	if (root.val > target)
+		BST(root.left, target);
+}
+'''
 
 class Node:
 	def __init__(self,data=None):
@@ -12,13 +28,40 @@ class BST:
 	def set_root(self, data):
 		self._root = Node(data)
 
+	# 遍历方式插入
+	def insert_into_bst_by_traverse(self,val):
+		if not self._root:
+			self._root = Node(val)
+			return
+
+		parent = None
+		cur = self._root
+		while cur:
+			parent = cur
+			cur = cur._left if cur.data > val else cur._right
+
+		new_node = Node(val)
+		if parent.data > val:
+			parent._left = new_node
+		else:
+			parent._right = new_node
+
+
 	# 递归方式插入新结点
 	def insert_into_bst(self, target_node, val):
-		new_node = Node(val)
+
+		# 放在这里有些不妥
+		# 因为 递归调用时每次都会产生 new_node 节点
+		# 并且大多数都是无用的
+		# new_node = Node(val)
+		# print('test:',new_node,val)
+
 		if self._root == None:
+			new_node = Node(val)
 			self._root = new_node
 
 		if target_node == None:
+			new_node = Node(val)
 			return new_node
 
 		if target_node.data < val:
@@ -41,6 +84,7 @@ class BST:
 			#2 要删除的节点只有一个非空节点，则让其孩子接替自己的位置
 			#3 要删除的节点拥有两个子节点，为了不破坏BST的性质，必须找到要删除节点的左子树中值最大的，或者右子书中值最小的
 			'''
+
 			#1
 			if target_node._left == None and target_node._right == None:
 				target_node = None
@@ -105,6 +149,11 @@ class BST:
 
 if __name__ == '__main__':
 	bst = BST()
+	bst.insert_into_bst_by_traverse(1)
+	bst.insert_into_bst_by_traverse(2)
+	bst.insert_into_bst_by_traverse(0)
+	bst.traverse(bst._root)
+	exit()
 	# bst.set_root(1)
 	# bst.insert_node_to_left(bst._root,2)
 	# bst.insert_node_to_right(bst._root,3)

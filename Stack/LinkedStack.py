@@ -1,3 +1,10 @@
+'''
+@Description: 
+@Date: 2019-06-26 22:36:53
+@Author: Wong Symbol
+@LastEditors: Wong Symbol
+@LastEditTime: 2020-06-20 17:32:28
+'''
 # !/usr/bin/env python3
 # -*- coding:utf-8 -*-
 
@@ -35,7 +42,7 @@ class LinkedStack(object):
 	def print(self):
 		top = self._top
 		while top:
-			print(top.data)
+			print(top.data,end="->")
 			top = top._next
 
 # 双栈构建一个队列

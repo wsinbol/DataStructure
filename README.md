@@ -27,38 +27,62 @@
     - 遍历式反转
     - 区间内反转
     - K个结点为一组型反转
-- 反转链表
+- [反转链表](LinkedList/ReverseList.py)
+    - 正序访问 VS 倒叙访问
 
 ## 栈 Stack
 - 链式栈
+    - 基于链表实现的栈
+    - 双栈构建的队列
 - 顺序栈
+    - 基于数组实现的栈
 - [站队高矮问题](Stack/nextGreaterElement.py)
+- [浏览器前进后退功能](Stack/Browser.py)
 
 ## 队列
-- 链式队列
-- 循环队列
-- 双端队列
+- [顺序队列](Queue/ArrayQueue.py)(尚未实现)
+    - 基于数组实现的队列
+- [链式队列](Queue/LinkedQueue.py)
+    - 基于链表实现的队列
+    - 基于队列实现的栈
+- [循环队列](Queue/CircularQueue.py) ***
+    - 循环队列的特性
+- [双端队列](Queue/Deque.py)
+    - 双端队列的特性
 
 ## 哈希表
-- 简易哈希表
-- 链式哈希表
+- [简易哈希表](HashTable/SimplyHashTable.py) ***
+    - 基于开放寻址法-线性探测的散列表
+- [链式哈希表](HashTable/LinkedHashTable.py) ***
+    - 基于单链表的散列表数据结构
 
 ## 树
-- 二叉树
-- 二叉搜索树
-- 多叉树
+- [二叉树](Tree/BinaryTree.py)
+    - 求二叉树的最小高度
+- [二叉搜索树](Tree/binary_search_tree.py) ***
+    - 二叉搜索树的框架
+    - 二叉搜索树的特性
+    - 二叉搜索树的遍历方式插入
+    - 二叉搜索树的递归方式插入
+- [多叉树](Tree/multi_tree.py)
+    - DFS
+    - BFS
 
 ## 图
-- 邻接链表
-- 广度优先搜索BFS
-- 深度优先搜索DFS
-- 迪杰斯特拉算法
+- [邻接链表](Graph/AdjacencyList.py)
+- [广度优先搜索BFS](Graph/BFS.py) ***
+    - 起点 到 终点 的最短路径问题
+    - 按层遍历
+- [深度优先搜索DFS](Graph/DFS.py) ***
+- [迪杰斯特拉算法](Graph/dijkstra.py) ***
 
 ## 堆
-- 二叉堆？？？
+- [二叉堆](Heap/priority_heap_max.py) ***
+    - 大顶堆
+    - 二叉堆实现优先级队列
 
-## 综合
-- LRU
+
+---
 
 ## 排序
 
@@ -67,7 +91,6 @@
 - 选择排序
 - 快速排序
 - 归并排序
----
 - 烧饼排序
 
 ## 查找、搜索
@@ -117,6 +140,10 @@
 - 最大子数组和
 - [四键按键问题](DynamicProgramming/print_most_a.py)
 - [二分数组等和问题](DynamicProgramming/split_eq_sum_set.py)
+
+
+## 综合
+- LRU
 
 
 
