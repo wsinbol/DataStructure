@@ -68,10 +68,15 @@
     - DFS
     - BFS
 
+## Trie
+- [Trie树](Trie/trie.py)
+
 ## 图
-- [邻接链表](Graph/AdjacencyList.py)
+- [图的表示](Graph/Graph.py)
+    - 邻接链表法
+    - 邻接矩阵法
 - [广度优先搜索BFS](Graph/BFS.py) ***
-    - 起点 到 终点 的最短路径问题
+    - 起点 到 终点 的最短路径问题(具体路径、最少扩散次数)
     - 按层遍历
 - [深度优先搜索DFS](Graph/DFS.py) ***
 - [迪杰斯特拉算法](Graph/dijkstra.py) ***
