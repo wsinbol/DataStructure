@@ -1,9 +1,15 @@
 '''
 @Description: Trie树
+Trie 树，也叫“字典树”。顾名思义，它是一个树形结构。它是一种专门处理字符串匹配的数据结构，用来解决在一组字符串集合中快速查找某个字符串的问题。
+属于多模式串匹配算法。
+
+单模式串匹配算法，是在一个模式串和一个主串之间进行匹配，也就是说，在一个主串中查找一个模式串。
+多模式串匹配算法，就是在多个模式串和一个主串之间做匹配，也就是说，在一个主串中查找多个模式串
+
 @Date: 2020-06-22 15:35:22
 @Author: Wong Symbol
 @LastEditors: Wong Symbol
-@LastEditTime: 2020-06-22 23:43:13
+@LastEditTime: 2020-06-23 15:57:23
 '''
 
 class TreeNode():
@@ -33,11 +39,17 @@ class Trie():
             node = node._children[index]
         return node._is_ending_char
     
-    def show(self,root_node):
+    # 递归遍历整个trie树
+    def show(self,root_node,pre='',level=0):
+        '''
+        root_node:当前节点
+        pre:当前节点前缀
+        level:层级
+        '''
         if root_node:
-            print(root_node.data)
+            print(pre,root_node.data,level)
             for child in root_node._children:
-                self.show(child)
+                self.show(child,pre+root_node.data,level+1)
     
 if __name__ == "__main__":
     strs = ["how", "hi", "her", "hello", "so", "see"]
@@ -45,7 +57,7 @@ if __name__ == "__main__":
     for s in strs:
         trie.insert(s)
 
-    # trie.show(trie._root)
-    print(trie.find("how"))
+    trie.show(trie._root)
+    # print(trie.find("her"))
         
             
