@@ -1,3 +1,10 @@
+'''
+@Description: 最小覆盖子串
+@Date: 2020-04-22 22:48:32
+@Author: Wong Symbol
+@LastEditors: Wong Symbol
+@LastEditTime: 2020-06-24 17:07:12
+'''
 
 
 '''
@@ -46,6 +53,8 @@ minStr = s[start:start+minLen] if minLen < float('inf') else ""
 print(window, match)
 print(minLen)
 print(minStr)
+
+
 
 
 

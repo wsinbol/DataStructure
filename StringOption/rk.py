@@ -3,7 +3,7 @@
 @Date: 2020-06-24 11:00:01
 @Author: Wong Symbol
 @LastEditors: Wong Symbol
-@LastEditTime: 2020-06-24 11:39:09
+@LastEditTime: 2020-06-24 17:20:19
 '''
 
 def simple_hash(str,start,end):
@@ -34,7 +34,7 @@ def rk(main, pattern):
         hash_memo[i] = simple_hash(main,i,i+n-1)
     '''
         
-    # 方法2
+    # 方法2，优化方法1的计算
     hash_memo[0] = simple_hash(main, 0, n-1)
     for i in range(1,m-n+1):
         hash_memo[i] = hash_memo[i-1] - simple_hash(main,i-1,i-1) + simple_hash(main,i+n-1,i+n-1)
@@ -42,6 +42,7 @@ def rk(main, pattern):
     # 模式串与子串的对比
     for index, val in enumerate(hash_memo):
         if val == hash_pattern:
+            # 解决hash冲突的问题
             if pattern == main[index:index+n]:
                 return index
 
