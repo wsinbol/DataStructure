@@ -1,6 +1,8 @@
 # DataStructure Content
 
->Language: Python 
+> Language: Python 
+
+> 菜鸡码农的自我救赎之路
 
 ## 数组
 - 寻找无序数组的错误值
@@ -70,6 +72,7 @@
 
 ## Trie
 - [Trie树](Trie/trie.py)
+    - Trie树的特性
 
 ## 图
 - [图的表示](Graph/Graph.py)
@@ -119,7 +122,18 @@
 - 洗牌算法
 
 ## 字符串
-- 最小覆盖子串
+- [BF算法](StringOption/bf.py)
+    - 暴力匹配算法、朴素匹配算法
+- [RK算法](StringOption/rk.py)
+    - 在BF算法的基础上借助哈希函数
+- [BM算法](StringOption/bm.py) ***
+    - 坏字符规则 & 好后缀规则
+- [KMP算法](StringOption/kmp.py)
+    - 好前缀规则
+    - 失效函数（next数组）
+    - 部分匹配表 PMT
+- [最小覆盖子串](StringOption/mini_length.py)
+    - 给你一个字符串S，一个字符串T，请在字符串S里面找出：包含T所有字母的最小子串，顺序可以不同
 - 无重复字符的最长子串及其长度
 - 接水问题
 
@@ -149,6 +163,7 @@
 
 ## 综合
 - LRU
+
 
 
 

@@ -3,10 +3,10 @@
 @Date: 2020-06-24 17:26:52
 @Author: Wong Symbol
 @LastEditors: Wong Symbol
-@LastEditTime: 2020-06-26 18:11:34
+@LastEditTime: 2020-06-27 10:43:06
 '''
 
-# 坏字符规则,有bug
+# 坏字符规则,有bug，会出现死循环的情况
 
 def bm_with_bug(main, pattern):
     m = len(main)
@@ -49,6 +49,7 @@ def bm_with_bug(main, pattern):
         
     return -1
 
+# bm算法正式版
 
 def bm(main, pattern):
     m = len(main)
@@ -83,6 +84,8 @@ def bm(main, pattern):
             y = move_by_gs(j,n,suffix,prefix)
 
         i += max(x,y)
+        
+    return -1
         
 
 
