@@ -3,7 +3,7 @@
 @Date: 2020-06-24 17:26:52
 @Author: Wong Symbol
 @LastEditors: Wong Symbol
-@LastEditTime: 2020-06-27 10:43:06
+@LastEditTime: 2020-06-28 20:24:54
 '''
 
 # 坏字符规则,有bug，会出现死循环的情况
@@ -94,8 +94,6 @@ def bm(main, pattern):
 def generate_gs(pattern,suffix,prefix):
     
     n = len(pattern)
-    # suffix = [-1] * n
-    # prefix = [False] * n
     
     for i in range(0,n-1):
         k = 0

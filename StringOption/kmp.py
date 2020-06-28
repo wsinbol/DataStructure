@@ -3,11 +3,11 @@
 @Date: 2020-06-27 18:43:36
 @Author: Wong Symbol
 @LastEditors: Wong Symbol
-@LastEditTime: 2020-06-27 23:43:11
+@LastEditTime: 2020-06-28 20:42:29
 '''
 
-# 更多资料
-# https://www.zhihu.com/question/21923021
+# 争哥版
+# 对于next数组值的理解是通过下标的形式 来计算的
 
 def get_next(pattern):
     n = len(pattern)
@@ -26,6 +26,7 @@ def get_next(pattern):
             j += 1
         
         nxt[i] = j
+    print(nxt)
     return nxt
 
 
@@ -47,12 +48,72 @@ def kmp(main, pattern):
                 
     return -1
 
+# 知乎版
+# https://www.zhihu.com/question/21923021 
+# 作者 海纳版
+# 对于next数组值的理解是通过 前缀子串与后缀子串能匹配的最长长度 来计算的
+
+def getNexts(pattern):
+    n = len(pattern)
+    nxt = [-1] * n
+
+    i = 0
+    j = -1
+
+    while i < n-1:
+        if j == -1 or pattern[i] == pattern[j]:
+            i += 1
+            j += 1
+            nxt[i] = j
+        else:
+            j = nxt[j]
+        
+    print(nxt)
+    return nxt
+
+def kmp_from_zhihu(main, pattern):
+    m = len(main)
+    n = len(pattern)
+
+    i,j = 0,0
+    nxt = getNexts(pattern)
+
+    while i < m and j < n:
+        if main[i] == pattern[j]:
+            i += 1
+            j += 1
+        else:
+            j = nxt[j]
+            
+    if j == n:
+        return i - j
+    else:
+        return -1
+
+
+# 知乎版
+# https://www.zhihu.com/question/21923021
+# 作者 灵茶山艾府
+
+
 
 if __name__ == '__main__':
     main = 'aabbbbaaabbababbabbbabaaabb'
     pattern = 'abbabbbabaa'
-    r = kmp(main,pattern)
+    r = kmp_from_zhihu(main,pattern)
     print(r)
+    
+    q = kmp(main,pattern)
+    print(q)
+    
+    '''
+    s = 'ababacd'
+    s = 'abababca'
+    print('length:')
+    getNexts(s)
+    print('index')
+    get_next(s)
+    '''
     
 
         
