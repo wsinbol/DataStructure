@@ -58,7 +58,31 @@ class MultiTree:
 			print(root_node.data)
 			for child in root_node.children:
 				self.traverse(child)
+    
+    # 递归遍历，与深度遍历同
+	def traverse_(self, root):
+		if not root:
+			return []
+		
+		res = [root.data]
+		for child in root.children:
+			res.extend(self.traverse_(child))
+		
+		return res
 
+	# 迭代式遍历
+	def traverse_iter(self,root):
+
+		res = []
+		stack = [root]
+		while stack:
+			node = stack.pop()
+			if node:
+				res.append(node.data)
+				# 这里是重点，要倒序插入
+				stack.extend(node.children[::-1])
+		return res
+    
 	# 广度遍历
 	def breadth_traverse(self, root):
 		"""借助队列实现树的层次遍历"""
@@ -77,16 +101,18 @@ class MultiTree:
 		return res
 
 if __name__ == '__main__':
-	# No.1 通过MultiTree类添加子节点，略显麻烦
-	'''
+    # No.1 通过MultiTree类添加子节点，略显麻烦
+	
 	mt = MultiTree()
 	mt.add_child(None,1)
 	mt.add_child(mt._root, 2)
 	mt.add_child(mt._root, 3)
 	mt.add_child(mt._root, 4)
 	mt.add_child(mt._root, 5)
-	mt.traverse(mt._root)
-	'''
+	r = mt.traverse_iter(mt._root)
+	print(r)
+	
+	exit()
 
 	# No.2 通过TreeNode类直接添加子节点
 	A = TreeNode('A')

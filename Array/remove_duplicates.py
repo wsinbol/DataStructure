@@ -1,3 +1,10 @@
+'''
+@Description: 去除有序数组的重复元素
+@Date: 2020-05-06 23:47:09
+@Author: Wong Symbol
+@LastEditors: Wong Symbol
+@LastEditTime: 2020-06-30 16:32:55
+'''
 
 '''
 去除有序数组的重复元素
@@ -24,6 +31,10 @@
 TIPS:
 
 去除单链表的重复元素原理同！
+
+From:
+
+https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
 
 '''
 
