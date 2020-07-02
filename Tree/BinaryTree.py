@@ -3,7 +3,7 @@
 @Date: 2020-06-04 00:02:32
 @Author: Wong Symbol
 @LastEditors: Wong Symbol
-@LastEditTime: 2020-06-04 16:01:10
+@LastEditTime: 2020-07-02 23:28:37
 '''
 
 
@@ -70,6 +70,14 @@ class BinaryTree():
             depth += 1
         
         return None
+    
+    def max_depth(self, root):
+        if not root:
+            return 0
+        
+        left_depth = self.max_depth(root._left)
+        right_depth = self.max_depth(root._right)
+        return max(left_depth, right_depth) + 1
         
 
 
@@ -91,7 +99,10 @@ if __name__ == '__main__':
     '''
     
     d = bt.min_depth(bt._root)
-    print('the binary tree depth is :', d)
+    print('the binary tree min depth is :', d)
+    
+    w = bt.max_depth(bt._root)
+    print('the binary tree max depth is : ',w)
 
 
 
