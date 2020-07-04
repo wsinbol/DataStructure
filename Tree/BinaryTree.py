@@ -3,7 +3,7 @@
 @Date: 2020-06-04 00:02:32
 @Author: Wong Symbol
 @LastEditors: Wong Symbol
-@LastEditTime: 2020-07-02 23:28:37
+@LastEditTime: 2020-07-04 16:16:47
 '''
 
 
@@ -71,6 +71,7 @@ class BinaryTree():
         
         return None
     
+    # 递归法求解最大深度
     def max_depth(self, root):
         if not root:
             return 0
@@ -78,6 +79,23 @@ class BinaryTree():
         left_depth = self.max_depth(root._left)
         right_depth = self.max_depth(root._right)
         return max(left_depth, right_depth) + 1
+    
+    # 迭代法求解最大深度
+    def max_depth_(self, root):
+        stack = []
+        if stack is not None:
+            stack.append((1,root))
+
+        depth = 0
+        while len(stack) > 0:
+            current_depth,node = stack.pop()
+            if node is not None:
+                depth = max(current_depth,depth)
+                stack.append((current_depth+1, node._left))
+                stack.append((current_depth+1,node._right))
+            
+        return depth
+            
         
 
 
@@ -85,10 +103,14 @@ if __name__ == '__main__':
     A = TreeNode('A')
     B = TreeNode('B')
     C = TreeNode('C')
+    D = TreeNode('D')
+    E = TreeNode('E')
     
     bt = BinaryTree(A)
     A.add2left(B)
     A.add2right(C)
+    C.add2left(D)
+    C.add2right(E)
 
     '''
     print('pre order is:')
