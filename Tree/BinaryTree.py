@@ -3,7 +3,7 @@
 @Date: 2020-06-04 00:02:32
 @Author: Wong Symbol
 @LastEditors: Wong Symbol
-@LastEditTime: 2020-07-04 16:16:47
+@LastEditTime: 2020-07-10 22:18:31
 '''
 
 
@@ -96,7 +96,33 @@ class BinaryTree():
             
         return depth
             
+    # BFS 求二叉树的最大深度        
+    def maxDepth(self, root):
+        if not root:
+            return 0
         
+        queue = [root]
+        depth = 0 # 这里为什么是0？因为 下面循环的时候多加了1
+        while len(queue) > 0:
+            size = len(queue)
+            for i in range(0,size):
+                current = queue.pop(0)
+                if current._left:
+                    queue.append(current._left)
+                if current._right:
+                    queue.append(current._right)
+            depth += 1
+            
+        return depth
+
+    def maxHeight(self, root):
+
+        if not root:
+            return -1
+    
+        left = self.maxHeight(root._left)
+        right = self.maxHeight(root._right)
+        return max(left, right) + 1
 
 
 if __name__ == '__main__':
@@ -107,10 +133,10 @@ if __name__ == '__main__':
     E = TreeNode('E')
     
     bt = BinaryTree(A)
-    A.add2left(B)
-    A.add2right(C)
-    C.add2left(D)
-    C.add2right(E)
+    # A.add2left(B)
+    # A.add2right(C)
+    # C.add2left(D)
+    # C.add2right(E)
 
     '''
     print('pre order is:')
@@ -120,10 +146,14 @@ if __name__ == '__main__':
     bt.mid_order(bt._root)
     '''
     
+    m = bt.maxHeight(bt._root)
+    print(m)
+    exit()
+    
     d = bt.min_depth(bt._root)
     print('the binary tree min depth is :', d)
     
-    w = bt.max_depth(bt._root)
+    w = bt.maxDepth(bt._root)
     print('the binary tree max depth is : ',w)
 
 
