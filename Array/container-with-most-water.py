@@ -2,8 +2,8 @@
 @Description: 盛最多水的容器
 @Date: 2020-06-30 16:33:17
 @Author: Wong Symbol
-@LastEditors: Wong Symbol
-@LastEditTime: 2020-06-30 16:41:58
+LastEditors: Wong Symbol
+LastEditTime: 2020-08-12 15:49:57
 '''
 
 '''
@@ -23,6 +23,24 @@
 3.i和j的移动过程，遵循谁矮谁移动，谁高谁不动的原则
 '''
 
+'''
+
+leetcode diy version
+
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        i,j = 0,len(height)-1
+        max_area = 0
+        
+        while i<j:
+            max_area = max(max_area, (j-i)*min(height[i],height[j]))
+            if height[i] < height[j]:
+                i += 1
+            else:
+                j -= 1
+                
+        return max_area
+'''
 
 def maxArea(height) -> int:
     i,j,res = 0,len(height)-1,0
