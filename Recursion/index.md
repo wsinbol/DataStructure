@@ -15,8 +15,6 @@
 
 从上到下方法最大的特点是在递归调用之前先进行必要的业务处理！也就是先把该节点的作用发挥，后面不需要理会该节点的作用，只需要向上返回值就好了！
 
-对于 求值 类问题：
-
 从上到下 的方法一般是从上到下进行调用，并携带一定的参数，然后从下到上返回目标值，对于最终结果而言，一般不需要任何辅助数据结构。
 
 ```python
@@ -158,6 +156,7 @@ class Solution:
         left = self.lowestCommonAncestor(root.left, p,q)
         right = self.lowestCommonAncestor(root.right, p, q)
         
+        # 对于后序遍历，一般而言当左右子树都为空时，应该return node，但此题中除了匹配出p or q, 其他情况全都返回 None!
         if left == None and right == None:
             return None
         if left != None and right != None:
