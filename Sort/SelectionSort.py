@@ -12,7 +12,7 @@ def SelectionSort(arr):
 	for i in range(length):
 		minIndex = i
 		minValue = arr[i]
-		for j in range(i,length):
+		for j in range(i+1,length):
 			if arr[j] < minValue:
 				minIndex = j
 				minValue = arr[minIndex]
@@ -20,7 +20,7 @@ def SelectionSort(arr):
 
 
 if __name__ == '__main__':
-	arr = [3,5,1,4,0]
+	arr = [9,3,5,-1,1,4,0]
 	SelectionSort(arr)
 	print(arr)
 
