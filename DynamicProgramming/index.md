@@ -69,7 +69,10 @@ for(i = n-1; i >=0; i--){
 }
 ```
 
-### 2.最长公共子序列长度
+### 2.最长公共子序列长度(LCS)
+
+4 different ways to solve Longest Common SubString problem
+https://leetcode.com/problems/maximum-length-of-repeated-subarray/discuss/413054/4-different-ways-to-solve-Longest-Common-SubString-problem
 
 dp 数组的定义：对于 s1[1..i] 和 s2[1..j]，它们的 LCS 长度是 dp[i][j]，我们的最终目标就是求 dp[i][j]，即二维数组的右下角的数字为最终答案。此时，引入双指针i,j分别遍历 s1、s2。
 

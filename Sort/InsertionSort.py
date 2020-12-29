@@ -5,7 +5,7 @@
 	将数据分为已排区间和未排区间
 	从未排区间中取出首个元素，按倒序方式依次遍历已排区间
 	将未排元素置于已排区间的合适位置
-'''
+'''                
 
 def InsertionSort(arr):
 	length = len(arr)
@@ -37,5 +37,5 @@ def InsertionSort(arr):
 if __name__ == '__main__':
 	arr = [3,5,1,4]
 	InsertionSort(arr)
-	# print(arr)
+	print(arr)
 
